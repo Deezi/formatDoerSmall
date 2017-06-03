@@ -3,12 +3,6 @@ Write-Host Disabling UAC
 Set-ItemProperty -Path $uacPath -Name "EnableLUA" -Value 0
 Write-Host Done
 
-Write-Host Downloading Chrome
-Invoke-WebRequest -Uri https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BE3116110-60AC-D0AE-44E9-5F352303192D%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Ddefaultbrowser/update2/installers/ChromeSetup.exe -Outfile '~\Downloads\ChromeSetup.exe'
-Write-Host Finished downloading Chrome from the intraweberinos and now were going to install it
-Start-Process -FilePath '~\Downloads\ChromeSetup.exe' -ArgumentList '/silent', '/install' -Wait
-Write-Host Done
-
 Write-Host Downloading Set-Privacy script and running it on "balanced" mode
 (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/hahndorf/Set-Privacy/master/Set-Privacy.ps1') | out-file ~\Downloads\Set-Privacy.ps1 -force 
 ~\Downloads\Set-Privacy.ps1 -Balanced
@@ -236,4 +230,10 @@ Write-Host Done, lets do the mouse threshold 1
 Set-ItemProperty -Path $generalMouse -Name MouseThreshold1 -value 0
 Write-Host Done, lets do the mouse threshold 2
 Set-ItemProperty -Path $generalMouse -Name MouseThreshold2 -value 0
+Write-Host Done
+
+Write-Host Downloading Chrome
+Invoke-WebRequest -Uri https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BE3116110-60AC-D0AE-44E9-5F352303192D%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-stable-statsdef_1%26installdataindex%3Ddefaultbrowser/update2/installers/ChromeSetup.exe -Outfile '~\Downloads\ChromeSetup.exe'
+Write-Host Finished downloading Chrome from the intraweberinos and now were going to install it
+Start-Process -FilePath '~\Downloads\ChromeSetup.exe' -ArgumentList '/silent', '/install' -Wait
 Write-Host Done
